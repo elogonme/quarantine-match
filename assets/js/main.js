@@ -33,7 +33,21 @@ function getInputFieldsInfo(){
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
     console.log('fetching Match info...');
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://love-calculator.p.rapidapi.com/getPercentage?fname=${person1.name}&sname=${person2.name}`,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "fcac5b61c1msh4ebb16d3bfa8330p11196fjsn97e7bb56efb3",
+            "x-rapidapi-host": "love-calculator.p.rapidapi.com"
+        }
+    };
     
+    $.ajax(settings).done(function (response) {
+        person1.matchPercentage = person2.matchPercentage = response.percentage;
+        person1.matchInfo = person2.matchInfo = response.result;
+    });
 };
 
 // function to fetch info from Numbers API
