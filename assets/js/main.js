@@ -3,14 +3,16 @@ $(document).ready(function(){
 var person1 = { // Object to store person 1 info
     name: '',
     dob: '',
-    matchInfo: '',
-    numbersInfo: ''
 };
 
 var person2 = { // Object to store person 2 info
     name: '',
     dob: '',
-    matchInfo: '',
+}
+
+var matchInfo = { // Object to store match Info
+    persentage: 0,
+    matchText: '',
     numbersInfo: ''
 }
 
@@ -20,6 +22,8 @@ $('#find-btn').on('click', function(){
     getInputFieldsInfo();
     fetchMatchApi(person1, person2);
     fetchNumbersApi(person1, person2);
+    displayMatchInfo(matchInfo);
+    displayNumbersInfo(matchInfo);
 });
 
 // Function to get input fields info
@@ -37,7 +41,14 @@ function fetchNumbersApi(person1, person2){
     console.log('fetching Numbers info...');
 };
 
+// function to display match info from Love Calculator API
+function displayMatchInfo(matchInfo){
 
+};
 
+// function to display match info from Love Calculator API
+function displayNumbersInfo(matchInfo){
+
+};
 
 });
