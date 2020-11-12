@@ -1,32 +1,30 @@
 $(document).ready(function(){
 // Main code goes here
 var person1 = { // Object to store person 1 info
-    name: '',
-    dob: '',
+    name: 'Samuel',
+    dob: '10/06/1988',
+    funFacts: [],
+    matchInfo: '',
+    matchPercentage: ''
 };
 
 var person2 = { // Object to store person 2 info
-    name: '',
-    dob: '',
+    name: 'Anna',
+    dob: '21/08/1990',
+    funFacts: [],
+    matchPercentage: ''
 }
 
-var matchInfo = { // Object to store match Info
-    persentage: 0,
-    matchText: '',
-    numbersInfo: ''
-}
 $('.datepicker').datepicker({format: 'dd/mm/yyyy'});
 
-// Function to detect link from find button
+// Function to detect click from find button
 $('#find-btn').on('click', function(){
     console.log('find button clicked');
-    if (getInputFieldsInfo()) {
-        fetchMatchApi(person1, person2);
-        fetchNumbersApi(person1, person2);
-        displayMatchInfo(matchInfo);
-        displayNumbersInfo(matchInfo);
-    }
-    
+    getInputFieldsInfo();
+    fetchMatchApi(person1, person2);
+    fetchNumbersApi(person1, person2);
+    displayMatchInfo(person1);
+    displayNumbersInfo(person1, person2);
 });
 
 // Function to get input fields info
