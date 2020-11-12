@@ -1,33 +1,50 @@
 $(document).ready(function(){
 // Main code goes here
 var person1 = { // Object to store person 1 info
-    name: 'Samuel',
-    dob: '10/06/1988',
-    funFacts: [],
-    matchInfo: '',
-    matchPercentage: ''
+    name: '',
+    dob: '',
 };
 
 var person2 = { // Object to store person 2 info
-    name: 'Anna',
-    dob: '21/08/1990',
-    funFacts: [],
-    matchPercentage: ''
+    name: '',
+    dob: '',
 }
 
-// Function to detect click from find button
+var matchInfo = { // Object to store match Info
+    persentage: 0,
+    matchText: '',
+    numbersInfo: ''
+}
+$('.datepicker').datepicker({format: 'dd/mm/yyyy'});
+
+// Function to detect link from find button
 $('#find-btn').on('click', function(){
     console.log('find button clicked');
-    getInputFieldsInfo();
-    fetchMatchApi(person1, person2);
-    fetchNumbersApi(person1, person2);
-    displayMatchInfo(person1);
-    displayNumbersInfo(person1, person2);
+    if (getInputFieldsInfo()) {
+        fetchMatchApi(person1, person2);
+        fetchNumbersApi(person1, person2);
+        displayMatchInfo(matchInfo);
+        displayNumbersInfo(matchInfo);
+    }
+    
 });
 
 // Function to get input fields info
 function getInputFieldsInfo(){
     console.log('getting input fields...');
+    if ($('#name1').val() && $('#name1').val() && $('#dob1').val() && $('#dob2').val()){
+    person1.name = $('#name1').val();
+    person2.name = $('#name2').val();
+    person1.dob = $('#dob1').val();
+    person2.dob = $('#dob2').val();
+    console.log(person1, person2);
+    $('#form')[0].reset();
+    return true
+    } else {
+        $('.validate').addClass('invalid')
+        return false
+    }
+    
 };
 
 // function to fetch info from Match API
