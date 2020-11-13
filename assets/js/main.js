@@ -43,9 +43,18 @@ function fetchNumbersApi(person1, person2){
 };
 
 // function to display match info from Love Calculator API
-function displayMatchInfo(matchInfo){
+ function displayMatchInfo(matchInfo){
+    console.log(matchInfo);
+// get positiion for persion1 on page
+let disPlayPercentage = document.getElementById("showPercentage");
+$("#showMatchInfo").html(matchInfo.matchInfo);
+
+disPlayPercentage.innerHTML = matchInfo.matchPercentage + "%";
+// disPlayPercentage.innerHTML = person1['funFacts'][0];
+
 
 };
+
 
 // function to display match info from Love Calculator API
 function displayNumbersInfo(matchInfo){
