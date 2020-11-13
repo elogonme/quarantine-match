@@ -16,6 +16,8 @@ var person2 = { // Object to store person 2 info
     matchPercentage: ''
 }
 
+$('.datepicker').datepicker({format: 'dd/mm/yyyy'});
+
 // Function to detect click from find button
 $('#find-btn').on('click', function(){
     console.log('find button clicked');
@@ -29,12 +31,39 @@ $('#find-btn').on('click', function(){
 // Function to get input fields info
 function getInputFieldsInfo(){
     console.log('getting input fields...');
+    if ($('#name1').val() && $('#name1').val() && $('#dob1').val() && $('#dob2').val()){
+    person1.name = $('#name1').val();
+    person2.name = $('#name2').val();
+    person1.dob = $('#dob1').val();
+    person2.dob = $('#dob2').val();
+    console.log(person1, person2);
+    $('#form')[0].reset();
+    return true
+    } else {
+        $('.validate').addClass('invalid')
+        return false
+    }
+    
 };
 
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
     console.log('fetching Match info...');
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://love-calculator.p.rapidapi.com/getPercentage?fname=${person1.name}&sname=${person2.name}`,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "fcac5b61c1msh4ebb16d3bfa8330p11196fjsn97e7bb56efb3",
+            "x-rapidapi-host": "love-calculator.p.rapidapi.com"
+        }
+    };
     
+    $.ajax(settings).done(function (response) {
+        person1.matchPercentage = person2.matchPercentage = response.percentage;
+        person1.matchInfo = person2.matchInfo = response.result;
+    });
 };
 
 // function to fetch info from Numbers API

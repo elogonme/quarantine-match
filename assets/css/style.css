@@ -1,8 +1,102 @@
-body {
-    background-image: url('../img/bg-img.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+
+h1 {
+    font: 400 100px/1.2 'Merienda One', Helvetica, sans-serif;
+    color: rgba(255, 255, 255);
+    text-shadow: 3px 3px 3px rgb(143, 141, 141);
+    font-size: 4rem;
+    margin-bottom: 4rem;
+}
+#name1, #name2, #dob1, #dob2 {
+    border: 1px solid #9e9e9e;
+    border-radius: 5px;
+    text-align: center;
+}
+
+label {
+    padding-left: 4px;
+}
+
+/* label focus color */
+label.active {
+    color: #000!important;
+}
+
+.helper-text:after {
+    color: #fff!important;
+}
+
+input {
+    background-color: white!important;
+}
+
+.row {
+    margin-bottom: 0;
+}
+
+/*--- background ---*/
+.pink {
+    color: rgba(229, 31, 140, 0.576);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    height: 100vh;
+    width: 50vw;
+}
+
+.blue {
+    color: rgba(29, 117, 158, 0.685);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -100;
+    height: 100vh;
+    width: 50vw;
+}
+
+.dates {
+    position: relative;
+}
+
+.hearts {
+    margin-top: 20px;
+    position: absolute;
+    width: 20vw;
+    z-index: -99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 2vw);
+}
+.signs {
+    position: relative;
+}
+
+.female {
+    margin-top: 20px;
+    position: absolute;
+    width: 20vw;
+    z-index: -99;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45vw, -25%);
+}
+
+.male {
+    margin-top: 20px;
+    position: absolute;
+    width: 28vw;
+    z-index: -99;
+    top: 50%;
+    left: 50%;
+    transform: translate(18vw, -25%);
+}
+
+#find-btn {
+    margin-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 9vw);
 }
 
 #showMatchInfo {
