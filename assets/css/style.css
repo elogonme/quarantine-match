@@ -60,11 +60,11 @@ input {
 .hearts {
     margin-top: 20px;
     position: absolute;
-    width: 300px;
+    width: 20vw;
     z-index: -99;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 0%);
+    transform: translate(-50%, 2vw);
 }
 .signs {
     position: relative;
@@ -87,6 +87,16 @@ input {
     z-index: -99;
     top: 50%;
     left: 50%;
-    transform: translate(20vw, -25%);
+    transform: translate(18vw, -25%);
 }
 
+#find-btn {
+    margin-top: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 9vw);
+}
+
+
+ 
