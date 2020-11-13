@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 // Main code goes here
 var person1 = { // Object to store person 1 info
@@ -130,13 +131,45 @@ function fetchNumbersApi(person1, person2){
 };
 
 // function to display match info from Love Calculator API
-function displayMatchInfo(matchInfo){
+ function displayMatchInfo(matchInfo){
+    console.log(matchInfo);
+// get positiion for persion1 on page
+let disPlayPercentage = document.getElementById("showPercentage");
+$("#showMatchInfo").html(matchInfo.matchInfo);
+
+disPlayPercentage.innerHTML = matchInfo.matchPercentage + "%";
+// disPlayPercentage.innerHTML = person1['funFacts'][0];
+
 
 };
+
 
 // function to display match info from Love Calculator API
 function displayNumbersInfo(matchInfo){
 
 };
 
+var htmlElement = "#numbers-display";
+
+/*
+
+    This function generates a random number, adds it to a string, 
+    then displays the string in an html element, then turns off the display after a delay,
+    then deletes the number from the string.
+    
+*/
+
+function displayNumber() {
+  var randomNumber = Math.floor(Math.random()*10);
+  var displayNumber = "";
+  displayNumber+=randomNumber;
+  $("#numbers-display").html(displayNumber);
+  displayNumber.substr(1);
+};
+
+//This function empties the html contents of an element.
+function dump(element) {
+  $(element).empty();
+};
+  
 });
