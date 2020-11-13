@@ -4,7 +4,7 @@ h1 {
     color: rgba(255, 255, 255);
     text-shadow: 3px 3px 3px rgb(143, 141, 141);
     font-size: 4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
 }
 #name1, #name2, #dob1, #dob2 {
     border: 1px solid #9e9e9e;
@@ -99,22 +99,32 @@ input {
     transform: translate(-50%, 9vw);
 }
 
+.info {
+    opacity: 0;
+    text-shadow: 3px 3px 3px rgb(143, 141, 141);
+    font-family: 'Roboto', sans-serif;
+}
+
 #showMatchInfo {
     color: white;
     font-size: xx-large;
     font-weight: bolder;
-    margin-bottom: 5px;
-    position: absolute;
-    left: 400px;
-    
-
 }
-#showPercentage {
 
+#showPercentage {
     font-size: xx-large;
     font-weight: bolder;
     color: white;
-    position: absolute;
-    left: 400px;
-    top: 250px;
 }
+
+@media only screen and (max-width: 568px) {
+    h1 {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (max-width: 360px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }

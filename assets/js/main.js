@@ -1,5 +1,6 @@
 
 $(document).ready(function(){
+    
 // Main code goes here
 var person1 = { // Object to store person 1 info
     name: 'Samuel',
@@ -24,7 +25,7 @@ $('#find-btn').on('click', function(){
     getInputFieldsInfo();
     fetchMatchApi(person1, person2);
     fetchNumbersApi(person1, person2);
-    displayMatchInfo(person1);
+    
     displayNumbersInfo(person1, person2);
 });
 
@@ -37,7 +38,7 @@ function getInputFieldsInfo(){
     person1.dob = $('#dob1').val();
     person2.dob = $('#dob2').val();
     console.log(person1, person2);
-    $('#form')[0].reset();
+    // $('#form')[0].reset();
     return true
     } else {
         $('.validate').addClass('invalid')
@@ -63,6 +64,7 @@ function fetchMatchApi(person1, person2){
     $.ajax(settings).done(function (response) {
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
+        displayMatchInfo(person1);
     });
 };
 
@@ -131,16 +133,18 @@ function fetchNumbersApi(person1, person2){
 };
 
 // function to display match info from Love Calculator API
- function displayMatchInfo(matchInfo){
-    console.log(matchInfo);
+ function displayMatchInfo(person1){
+    console.log(person1.matchInfo);
 // get positiion for persion1 on page
-let disPlayPercentage = document.getElementById("showPercentage");
-$("#showMatchInfo").html(matchInfo.matchInfo);
-
-disPlayPercentage.innerHTML = matchInfo.matchPercentage + "%";
-// disPlayPercentage.innerHTML = person1['funFacts'][0];
-
-
+var $percentage = $('#showPercentage');
+var $match = $('#showMatchInfo');
+$percentage.hide();
+$match.hide();
+$('.info').css('opacity','1');
+$match.text(person1.matchInfo);
+$percentage.text(person1.matchPercentage + "% match");
+$match.fadeIn('fast');
+$percentage.fadeIn('fast');
 };
 
 
