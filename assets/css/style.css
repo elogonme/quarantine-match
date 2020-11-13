@@ -1,0 +1,26 @@
+body {
+    background-image: url('../img/bg-img.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#showMatchInfo {
+    color: white;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    position: absolute;
+    left: 400px;
+    
+
+}
+#showPercentage {
+
+    font-size: xx-large;
+    font-weight: bolder;
+    color: white;
+    position: absolute;
+    left: 400px;
+    top: 250px;
+}
