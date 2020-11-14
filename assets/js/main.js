@@ -1,5 +1,8 @@
 
 $(document).ready(function(){
+
+var user1 = {}; // Object to store LocalStorage
+var user2 = {}; // Object to store LocalStorage
     
 // Main code goes here
 var person1 = { // Object to store person 1 info
@@ -147,6 +150,10 @@ $percentage.text(person1.matchPercentage + "% match");
 $match.fadeIn('fast');
 $percentage.fadeIn('fast');
 };
+
+//Local Storage
+localStorage.setItem(person1, JSON.stringfy(user1));
+localStorage.setItem(person2, JSON.stringfy(user2));
 
 
 // function to display match info from Love Calculator API
