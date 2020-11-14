@@ -10,6 +10,7 @@ $('.datepicker').datepicker({
     minDate: new Date(1900,1,1),
     yearRange: 70
 });
+
 initialize();
 
 // Function to initialize first view of page and default variables
@@ -48,17 +49,21 @@ $('#find-btn').on('click', function(){
     checkInputFields();
 });
 
+// ----------------- View history ---------
+// event listener to get button clck 
+
 // function to check if any input field is empty if not then execute code
 function checkInputFields(){
     if (getInputFieldsInfo()){
         fetchMatchApi(person1, person2);
         fetchNumbersApi(person1, person2);
+
     };
 };
 
 // Function to get input fields info and assign info to person1 and person2 properties
 function getInputFieldsInfo(){
-    if ($('#name1').val() && $('#name1').val() && $('#dob1').val() && $('#dob2').val()){
+    if ($('#name1').val() && $('#name2').val() && $('#dob1').val() && $('#dob2').val()){
     person1.name = $('#name1').val();
     person2.name = $('#name2').val();
     person1.dob = $('#dob1').val();
@@ -89,6 +94,8 @@ function fetchMatchApi(person1, person2){
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
         displayMatchInfo(person1);  // Display recieved match info on page
+        // ----- Fetch gif to display ------------
+        //  getGif(person1.percentage);
     });
 };
 
