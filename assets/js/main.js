@@ -1,56 +1,79 @@
-
 $(document).ready(function(){
-    
 // Main code goes here
-var person1 = { // Object to store person 1 info
-    name: 'Samuel',
-    dob: '10/06/1988',
-    funFacts: [],
-    matchInfo: '',
-    matchPercentage: ''
-};
 
-var person2 = { // Object to store person 2 info
-    name: 'Anna',
-    dob: '21/08/1990',
-    funFacts: [],
-    matchPercentage: ''
+var person1 = {}; // Object to store person 1 info
+var person2 = {}; // Object to store person 2 info
+
+$('.datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+    defaultDate: new Date(1990,06,06),
+    minDate: new Date(1900,1,1),
+    yearRange: 70
+});
+initialize();
+
+// Function to initialize first view of page and default variables
+function initialize(){
+    $('.fact-card').removeClass('scale-in'); // hide info cards
+    $('.info').removeClass('scale-in'); // hide match info
+    // Clear person1
+    person1 = { 
+        name: '',
+        dob: '',
+        funFacts: [],
+        matchInfo: '',
+        matchPercentage: ''
+    };
+    // Clear person2
+    person2 = { 
+        name: '',
+        dob: '',
+        funFacts: [],
+        matchPercentage: ''
+    }
 }
 
-$('.datepicker').datepicker({format: 'dd/mm/yyyy'});
+// Function to detect click from enter key and execute code
+$(window).on("keypress", function(event) {
+    if (event.which === 13) {
+      event.preventDefault();
+      initialize();
+      checkInputFields();      
+    };
+  });
 
-// Function to detect click from find button
+// Function to detect click from find button and execute code
 $('#find-btn').on('click', function(){
-    console.log('find button clicked');
-    if (getInputFieldsInfo()){
-        fetchMatchApi(person1, person2);
-    fetchNumbersApi(person1, person2);
-    displayNumbersInfo(person1, person2);
-    }
-    
+    initialize();
+    checkInputFields();
 });
 
-// Function to get input fields info
+// function to check if any input field is empty if not then execute code
+function checkInputFields(){
+    if (getInputFieldsInfo()){
+        fetchMatchApi(person1, person2);
+        fetchNumbersApi(person1, person2);
+    };
+};
+
+// Function to get input fields info and assign info to person1 and person2 properties
 function getInputFieldsInfo(){
-    console.log('getting input fields...');
     if ($('#name1').val() && $('#name1').val() && $('#dob1').val() && $('#dob2').val()){
     person1.name = $('#name1').val();
     person2.name = $('#name2').val();
     person1.dob = $('#dob1').val();
     person2.dob = $('#dob2').val();
-    console.log(person1, person2);
-    // $('#form')[0].reset();
+    $('#form')[0].reset();
     return true
     } else {
+        // assign invalid class to get error messages of form displayed
         $('.validate').addClass('invalid')
         return false
     }
-    
 };
 
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
-    console.log('fetching Match info...');
     const settings = {
         "async": true,
         "crossDomain": true,
@@ -65,13 +88,12 @@ function fetchMatchApi(person1, person2){
     $.ajax(settings).done(function (response) {
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
-        displayMatchInfo(person1);
+        displayMatchInfo(person1);  // Display recieved match info on page
     });
 };
 
 // function to fetch info from Numbers API
 function fetchNumbersApi(person1, person2){
-    console.log('fetching Numbers info...');
     // Extract day, month and year from date string
     person1.day = person1.dob.slice(0, 2);
     person1.month = person1.dob.slice(3, 5);
@@ -129,52 +151,32 @@ function fetchNumbersApi(person1, person2){
         $.each(JSON.parse(data), function(key, fact){
             person2.funFacts.push(fact);
         });
+        displayNumbersInfo(person1, 1);
+        displayNumbersInfo(person2, 2);
     });
-    console.log(person1, person2); // Output to console person1 and 2 data for testing
 };
 
 // function to display match info from Love Calculator API
  function displayMatchInfo(person1){
-    console.log(person1.matchInfo);
-// get positiion for persion1 on page
-var $percentage = $('#showPercentage');
-var $match = $('#showMatchInfo');
-$percentage.hide();
-$match.hide();
-$('.info').css('opacity','1');
-$match.text(person1.matchInfo);
-$percentage.text(person1.matchPercentage + "% match");
-$match.fadeIn('fast');
-$percentage.fadeIn('fast');
+    var $percentage = $('#showPercentage');
+    var $match = $('#showMatchInfo');
+    $match.text(person1.matchInfo);
+    $percentage.text(person1.matchPercentage + "% match");
+    $('.info').addClass('scale-in');
 };
-
 
 // function to display match info from Love Calculator API
-function displayNumbersInfo(matchInfo){
-
+function displayNumbersInfo(person, cardNo){
+    // first clear any old info from page
+    $(`#p${cardNo}-facts`).empty();
+    // create elelment with text to display on page
+    $(`#person${cardNo}-title`).html('Date facts for ' + '<strong>' + person.name + '</strong>' + ' - ' + person.dob);
+    for (var i = 0; i < person.funFacts.length; i++){
+        var $fact = $('<li>');
+        $fact.text(person.funFacts[i]);
+        $(`#p${cardNo}-facts`).append($fact);
+    }
+    $('.fact-card').addClass('scale-in'); // animate card to appear - using materialize animation
 };
 
-var htmlElement = "#numbers-display";
-
-/*
-
-    This function generates a random number, adds it to a string, 
-    then displays the string in an html element, then turns off the display after a delay,
-    then deletes the number from the string.
-    
-*/
-
-function displayNumber() {
-  var randomNumber = Math.floor(Math.random()*10);
-  var displayNumber = "";
-  displayNumber+=randomNumber;
-  $("#numbers-display").html(displayNumber);
-  displayNumber.substr(1);
-};
-
-//This function empties the html contents of an element.
-function dump(element) {
-  $(element).empty();
-};
-  
 });
