@@ -48,6 +48,17 @@ function getInputFieldsInfo(){
     
 };
 
+//---------------View History-----------------------
+//eventListener to view history
+const displayPerson1 = localStorage.getItem('user1') 
+const displayPerson2 = localStorage.getItem('user2') 
+$(document).ready(function(){
+    $('.modal').modal();
+    $(".modal-content p").text(displayPerson1 + displayPerson2);
+
+
+  });
+
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
     console.log('fetching Match info...');
