@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Materialize icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merienda+One' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Main styles sheet -->
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -30,8 +30,7 @@
 
   <body >
     <main>
-      <div  class="container center-align">
-      <!-- <img src="./assets/img/bg-img.jpg" alt="backgroundimg"> -->
+      <div  class="center-align">
         <!-- Page Content goes here -->
         <h1>Quarantine Match</h1>
         
@@ -41,7 +40,7 @@
         </div>
         <div class="row">
           <form id="form" class="col s12">
-            <div class="info">
+            <div class="info scale-transition scale-out">
               <div id="showMatchInfo">Match Info here</div>
               <div id="showPercentage">% match</div>
             </div>
@@ -82,6 +81,26 @@
         <!-- <img src="assets/img/background.png" alt="Background image" class="responsive-img bg-img"> -->
       </div>
       
+      <div class="row info-cards">
+        <!-- Card to display number facts for person 1 -->
+        <div class="col s12 m6">
+          <div class="card fact-card red lighten-5 scale-transition scale-out">
+            <div class="card-content">
+              <span id="person1-title" class="card-title"></span>
+              <ul id="p1-facts" class="facts left-align"></ul>
+            </div>
+          </div>
+        </div>
+        <!-- Card to display number facts for person 2 -->
+        <div class="col s12 m6">
+          <div class="card fact-card red lighten-5 scale-transition scale-out">
+            <div class="card-content">
+              <span id="person2-title" class="card-title"></span>
+              <ul id="p2-facts" class="facts left-align"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
      
         
     </main>
