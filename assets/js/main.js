@@ -22,11 +22,12 @@ $('.datepicker').datepicker({format: 'dd/mm/yyyy'});
 // Function to detect click from find button
 $('#find-btn').on('click', function(){
     console.log('find button clicked');
-    getInputFieldsInfo();
-    fetchMatchApi(person1, person2);
+    if (getInputFieldsInfo()){
+        fetchMatchApi(person1, person2);
     fetchNumbersApi(person1, person2);
-    
     displayNumbersInfo(person1, person2);
+    }
+    
 });
 
 // Function to get input fields info
