@@ -3,13 +3,17 @@ $(document).ready(function(){
 
 var person1 = {}; // Object to store person 1 info
 var person2 = {}; // Object to store person 2 info
-
+// Enable date picker from materialize on the page
 $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     defaultDate: new Date(1990,06,06),
     minDate: new Date(1900,1,1),
     yearRange: 70
 });
+
+// Enable modal from materialize on the page
+$('.modal').modal();
+$(".modal-content p").text('these are best');
 
 initialize();
 
@@ -78,15 +82,15 @@ function getInputFieldsInfo(){
 };
 
 //---------------View History-----------------------
-//eventListener to view history
-const displayPerson1 = localStorage.getItem('user1') 
-const displayPerson2 = localStorage.getItem('user2') 
-$(document).ready(function(){
-    $('.modal').modal();
-    $(".modal-content p").text(displayPerson1 + displayPerson2);
+// //eventListener to view history
+// const displayPerson1 = localStorage.getItem('user1') 
+// const displayPerson2 = localStorage.getItem('user2') 
+// $(document).ready(function(){
+//     $('.modal').modal();
+//     $(".modal-content p").text(displayPerson1 + displayPerson2);
 
 
-  });
+//   });
 
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
@@ -105,6 +109,7 @@ function fetchMatchApi(person1, person2){
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
         displayMatchInfo(person1);  // Display recieved match info on page
+        saveMatchHistory(person1, person2); // Save matched couple to history in local storage
         // ----- Fetch gif to display ------------
         //  getGif(person1.percentage);
     });
@@ -196,5 +201,15 @@ function displayNumbersInfo(person, cardNo){
     }
     $('.fact-card').addClass('scale-in'); // animate card to appear - using materialize animation
 };
+
+// Function to save matched couples into loacal storage
+function saveMatchHistory(person1, person2){
+    var couplesArr = JSON.parse(localStorage.getItem('couples'));
+    if (!couplesArr){
+        couplesArr = [];
+    }
+    couplesArr.push([person1, person2]);
+    localStorage.setItem('couples', JSON.stringify(couplesArr));
+}
 
 });
