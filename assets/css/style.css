@@ -29,6 +29,10 @@ input {
     background-color: white!important;
 }
 
+.input-field {
+    margin: 0;
+}
+
 .row {
     margin-bottom: 0;
 }
@@ -116,18 +120,6 @@ input {
     color: white;
 }
 
-#historyBtn {
-    background-color: #ef9a9a;
-    position: absolute;
-    top: 20%;
-    left: 72%;
-
-}
-
-.modal-content {
-    background-color: #ffcdd2;
-}
-
 .card-content {
     padding: 5px 20px!important;
 }
@@ -149,28 +141,10 @@ li::before {
     h1 {
       font-size: 3rem;
     }
-    #historyBtn{
-        width: 50px;
-        padding: 1px;
-        font-size: 70%;
-        line-height: 1.5;
-        position: absolute;
-        top: 18%;
-        left: 70%;
-
-    }
   }
 
   @media only screen and (max-width: 360px) {
     h1 {
       font-size: 2.5rem;
-    }
-    #historyBtn{
-        width: 45px;
-        line-height: 1.5;
-        font-size: 60%;
-        position: absolute;
-        top: 22%;
-        left: 70%;
     }
   }
