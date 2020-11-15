@@ -3,6 +3,7 @@ $(document).ready(function(){
 
 var person1 = {}; // Object to store person 1 info
 var person2 = {}; // Object to store person 2 info
+
 // Enable date picker from materialize on the page
 $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
@@ -13,9 +14,33 @@ $('.datepicker').datepicker({
 
 // Enable modal from materialize on the page
 $('.modal').modal();
-$(".modal-content p").text('these are best');
 
 initialize();
+
+// Event listener to detect click from enter key and execute code
+$(window).on("keypress", function(event) {
+    if (event.which === 13) {
+      event.preventDefault();
+      initialize();
+      checkInputFields();      
+    };
+  });
+
+// Event listener to detect click from find button and execute code
+$('#find-btn').on('click', function(){
+    initialize();
+    checkInputFields();
+});
+
+// Event listener to detect history button and display list
+$('#historyBtn').on('click', function(){
+    loadMatchHistory();
+});
+
+// Event listener to detect clear history button and clear local storage
+$('#clear-history').on('click', function(){
+    localStorage.clear();
+});
 
 // Function to initialize first view of page and default variables
 function initialize(){
@@ -38,30 +63,11 @@ function initialize(){
     }
 }
 
-// Function to detect click from enter key and execute code
-$(window).on("keypress", function(event) {
-    if (event.which === 13) {
-      event.preventDefault();
-      initialize();
-      checkInputFields();      
-    };
-  });
-
-// Function to detect click from find button and execute code
-$('#find-btn').on('click', function(){
-    initialize();
-    checkInputFields();
-});
-
-// ----------------- View history ---------
-// event listener to get button clck 
-
 // function to check if any input field is empty if not then execute code
 function checkInputFields(){
     if (getInputFieldsInfo()){
         fetchMatchApi(person1, person2);
         fetchNumbersApi(person1, person2);
-
     };
 };
 
@@ -80,17 +86,6 @@ function getInputFieldsInfo(){
         return false
     }
 };
-
-//---------------View History-----------------------
-// //eventListener to view history
-// const displayPerson1 = localStorage.getItem('user1') 
-// const displayPerson2 = localStorage.getItem('user2') 
-// $(document).ready(function(){
-//     $('.modal').modal();
-//     $(".modal-content p").text(displayPerson1 + displayPerson2);
-
-
-//   });
 
 // function to fetch info from Match API
 function fetchMatchApi(person1, person2){
@@ -210,6 +205,26 @@ function saveMatchHistory(person1, person2){
     }
     couplesArr.push([person1, person2]);
     localStorage.setItem('couples', JSON.stringify(couplesArr));
+}
+
+function loadMatchHistory(){
+    $('#match-list').empty(); // Clear any old data from modal element
+    var couplesArr = JSON.parse(localStorage.getItem('couples'));
+    if (!couplesArr){
+        couplesArr = [];
+    }
+    // Extract match info from saved couples and create strings list to display
+    var list = couplesArr.map(function(element){
+        var listString =element[0].matchPercentage + ' % - ' + element[0].name + ' & ' + element[1].name + ' - ' + element[0].matchInfo;
+        return listString
+    });
+    // Sort list in ascending order based on %
+    list.sort().reverse();
+    $.each(list, function(index, value){
+        $matchList = $('<li class="collection-item">')
+        $matchList.html(value);
+    $('#match-list').append($matchList);    
+    });
 }
 
 });

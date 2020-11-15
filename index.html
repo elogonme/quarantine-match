@@ -45,12 +45,12 @@
               <div id="showPercentage">% match</div>
             </div>
             <div class="row">
-              <div class="input-field col s2 push-s4">
+              <div class="input-field col s4 m2 push-s2 push-m4">
                 <input id="name1" type="text" class="validate" required>
                 <label for="name1">Enter Name 1</label>
                 <span class="helper-text" data-error="Name required"></span>
               </div>
-              <div class="input-field col s2 push-s4">
+              <div class="input-field col s4 m2 push-s2 push-m4">
                 <input id="name2" type="text" class="validate" required>
                 <label for="name2">Enter Name 2</label>
                 <span class="helper-text" data-error="Name required"></span>
@@ -58,13 +58,13 @@
             </div>
             <div class="dates">
               <div class="row">
-                <div class="input-field col s2 push-s4">
+                <div class="input-field col s4 m2 push-s2 push-m4">
                   <input id="dob1" type="text" class="validate datepicker" required>
                   <label for="dob1">Date of Birth 1</label>
                   <span class="helper-text" data-error="Date required"></span>
                 </div>
               
-                <div class="input-field col s2 push-s4">
+                <div class="input-field col s4 m2 push-s2 push-m4">
                   <input id="dob2" type="text" class="validate datepicker" required>
                   <label for="dob2">Date of Birth 2</label>
                   <span class="helper-text" data-error="Date required"></span>
@@ -76,11 +76,12 @@
         </div>
       </div>
       <!-- Modal Trigger -->
-      <button id="historyBtn" data-target="modal1" class="btn modal-trigger red">Best couples</button>
+      <button id="historyBtn" data-target="modal1" class="btn modal-trigger cyan">Best couples</button>
+
       <!-- Background  -->
       <div class="background">
-        <div class="pink accent-2 col s1"></div>
-        <div class="blue accent-2 col s1"></div>
+        <div class="pink-bg pink accent-2 col s1"></div>
+        <div class="blue-bg blue accent-2 col s1"></div>
       </div>
       
       <div class="row info-cards">
@@ -108,13 +109,14 @@
       
 
       <!-- Modal Structure -->
-      <div id="modal1" class="modal">
+      <div id="modal1" class="modal  center-align">
         <div class="modal-content">
           <h4>Here's the best matched couples</h4>
-          <p>A bunch of text</p>
+          <ul id="match-list" class="collection left-align"></ul>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">OK</a>
+          <a href="#!" class="modal-close btn waves-effect waves-light blue">OK</a>
+          <a href="#!" id="clear-history" class="modal-close btn waves-effect waves-light red">Clear History</a>
         </div>
       </div>
  
