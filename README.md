@@ -27,7 +27,7 @@ Web Application can be accessed at [https://elogonme.github.io/quarantine-match/
 
 History of searched couples will be saved and can be viewed by clicking on BEST COUPLES button.
 
-![Demo of Main page](assets/img/demo.gif)
+![Demo of Main page](assets/img/demo.jpg)
 
   
 
