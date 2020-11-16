@@ -41,7 +41,7 @@ All web app `code` is available at repository [https://github.com/elogonme/quara
 
 ## Credits
 
-![alt text](https://cdn.utorontobootcamp.com/wp-content/themes/UOFT-V3.5/media/img/school_logo.svg "UofT Bootcamp")
+![alt text](https://cdn.utorontobootcamp.com/wp-content/themes/UOFT-V3.5/media/img/school_logo.svg =250x)
 
 Coded by group of students as a project at UofT coding bootcamp by  [Eldar Humbatov](https://github.com/elogonme), Joyson Enoch, Yenyu Lai, John Okwuobi, Lina Zughaiyer
 
