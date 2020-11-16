@@ -104,7 +104,7 @@ function fetchMatchApi(person1, person2){
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
         displayMatchInfo(person1);  // Display recieved match info on page
-        getGif(response.percentage); // // Fetch gif to display
+        getGif(response.percentage); // Fetch gif image and display
         saveMatchHistory(person1, person2); // Save matched couple to history in local storage
     });
 };
@@ -128,7 +128,8 @@ function fetchNumbersApi(person1, person2){
             "x-rapidapi-host": "numbersapi.p.rapidapi.com"
         }
     };
-    
+
+    // Get facts for person1 based on their day/month date
     apiCall1 = $.get(settings).done(function (response) {
         person1.funFacts.push(response.text);
     });
@@ -138,7 +139,6 @@ function fetchNumbersApi(person1, person2){
     apiCall2 = $.get(settings).done(function (response) {
         person2.funFacts.push(response.text);
     });
-    
 
     // Get facts for person1 & 2 based on their year date
     settings.url = `https://numbersapi.p.rapidapi.com/${person1.year + ',' + person2.year}/year?json=true`;
@@ -163,6 +163,7 @@ function fetchNumbersApi(person1, person2){
             person2.funFacts.push(fact);
         });
     });
+
     // Get trivia facts for person1 based on day number and month number
     settings.url = `https://numbersapi.p.rapidapi.com/${person1.day + ',' + person1.month}/trivia`;
     apiCall6 = $.get(settings).done(function (response) {
@@ -178,6 +179,7 @@ function fetchNumbersApi(person1, person2){
             person2.funFacts.push(fact);
         });
     });
+
     // when response data recieved from all requests call display info functions
     $.when(apiCall1, apiCall2, apiCall3, apiCall4, apiCall5, apiCall6, apiCall7).done(function(){
         displayNumbersInfo(person1, 1);
@@ -194,7 +196,7 @@ function fetchNumbersApi(person1, person2){
     $('.info').addClass('scale-in');
 };
 
-// Function to fetch funny gif from Giphy API based on percentage
+// Function to fetch funny gif from Giphy API based on percentage and display
 function getGif(percentage){
     var matchNumber = parseInt(percentage);
     var keyWord = '';
@@ -218,7 +220,7 @@ function getGif(percentage){
     $.get(endpoint, function (response) {
        var index = Math.floor(Math.random()*10); // get random index to choose gif out of 10 results
        $('#giphy').attr('src', response.data[index].images.original.url);
-       $('.gif').addClass('scale-in');
+       $('.gif').addClass('scale-in'); // Animate scale-in using materialize to display gif
     });
 };
 
@@ -240,7 +242,7 @@ function displayNumbersInfo(person, cardNo){
 function saveMatchHistory(person1, person2){
     var couplesArr = JSON.parse(localStorage.getItem('couples'));
     if (!couplesArr){
-        couplesArr = [];
+        couplesArr = []; // If there is no saved data in local storage create empty array
     }
     couplesArr.push([person1, person2]);
     localStorage.setItem('couples', JSON.stringify(couplesArr));
