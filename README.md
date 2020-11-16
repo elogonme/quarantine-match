@@ -3,6 +3,7 @@
   
 We have created a fun application, **Quarantine Match** to boost morale while maintaining social distancing in the current time of uncertainty and downcast moods. This application allows you to check compatibility with people you have recently met based on name and date of birth. In a time where corona cases are spiking, we are promoting social distancing. Quarantine Match is a fun application and not meant to provide viable data, but meant to be more of an ice breaker between two strangers and give them entertaining topics to build on and spark conversations. Humans are interactive beings, and during times of lockdown, we are building bridges of connection with fun facts.
 Help people to find person of interest based on names and some funny facts, entertain and have fun while using **Quarantine Match** web app!
+
 ![Demo of Main page](assets/img/demo.jpg)
 
 App uses three different APIs:
