@@ -4,6 +4,8 @@
 We have created a fun application, **Quarantine Match** to boost morale while maintaining social distancing in the current time of uncertainty and downcast moods. This application allows you to check compatibility with people you have recently met based on name and date of birth. In a time where corona cases are spiking, we are promoting social distancing. Quarantine Match is a fun application and not meant to provide viable data, but meant to be more of an ice breaker between two strangers and give them entertaining topics to build on and spark conversations. Humans are interactive beings, and during times of lockdown, we are building bridges of connection with fun facts.
 Help people to find person of interest based on names and some funny facts, entertain and have fun while using **Quarantine Match** web app!
 
+![Demo of Main page](assets/img/demo.jpg)
+
 App uses three different APIs:
  * [Love Calculator API](https://rapidapi.com/ajith/api/love-calculator) to find Love compatibility & chances of successful love relationship based on names.
  * [Numbers API](https://rapidapi.com/divad12/api/numbers-1) - an API for interesting facts about numbers. Provides trivia, math, date, and year facts about numbers.
@@ -27,7 +29,7 @@ Web Application can be accessed at [https://elogonme.github.io/quarantine-match/
 
 History of searched couples will be saved and can be viewed by clicking on BEST COUPLES button.
 
-![Demo of Main page](assets/img/demo.gif)
+
 
   
 
@@ -41,11 +43,9 @@ All web app `code` is available at repository [https://github.com/elogonme/quara
 
 ## Credits
 
-![UofT Bootcamp](https://cdn.utorontobootcamp.com/wp-content/themes/UOFT-V3.5/media/img/school_logo.svg){:height="250px"}
+<img  src="https://cdn.utorontobootcamp.com/wp-content/themes/UOFT-V3.5/media/img/school_logo.svg"  alt="UofT Logo" width="200"/>
 
 Coded by group of students as a project at UofT coding bootcamp by  [Eldar Humbatov](https://github.com/elogonme), Joyson Enoch, Yenyu Lai, John Okwuobi, Lina Zughaiyer
-
-  
 
 ## License
 
