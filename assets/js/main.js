@@ -1,6 +1,5 @@
 $(document).ready(function(){
 // Main code goes here
-
 var person1 = {}; // Object to store person 1 info
 var person2 = {}; // Object to store person 2 info
 
@@ -15,7 +14,7 @@ $('.datepicker').datepicker({
 // Enable modal from materialize on the page
 $('.modal').modal();
 
-initialize();
+initialize(); // reset varaibles, hide elements, initialize web page first look
 
 // Event listener to detect click from enter key and execute code
 $(window).on("keypress", function(event) {
@@ -37,7 +36,7 @@ $('#historyBtn').on('click', function(){
     loadMatchHistory();
 });
 
-// Event listener to detect clear history button and clear local storage
+// Event listener to detect clear history button click and clear local storage
 $('#clear-history').on('click', function(){
     localStorage.clear();
 });
@@ -46,6 +45,7 @@ $('#clear-history').on('click', function(){
 function initialize(){
     $('.fact-card').removeClass('scale-in'); // hide info cards
     $('.info').removeClass('scale-in'); // hide match info
+    $('.gif').removeClass('scale-in'); // hide giphy image
     // Clear person1
     person1 = { 
         name: '',
@@ -87,7 +87,7 @@ function getInputFieldsInfo(){
     }
 };
 
-// function to fetch info from Match API
+// function to fetch info from Match API Love Calculator
 function fetchMatchApi(person1, person2){
     const settings = {
         "async": true,
@@ -104,9 +104,8 @@ function fetchMatchApi(person1, person2){
         person1.matchPercentage = person2.matchPercentage = response.percentage;
         person1.matchInfo = person2.matchInfo = response.result;
         displayMatchInfo(person1);  // Display recieved match info on page
+        getGif(response.percentage); // // Fetch gif to display
         saveMatchHistory(person1, person2); // Save matched couple to history in local storage
-        // ----- Fetch gif to display ------------
-        //  getGif(person1.percentage);
     });
 };
 
@@ -181,6 +180,34 @@ function fetchNumbersApi(person1, person2){
     $match.text(person1.matchInfo);
     $percentage.text(person1.matchPercentage + "% match");
     $('.info').addClass('scale-in');
+};
+
+// Function to fetch funny gif from Giphy API based on percentage
+function getGif(percentage){
+    var matchNumber = parseInt(percentage);
+    var keyWord = '';
+    if (matchNumber < 15){
+        keyWord = 'nope'
+    } else if (matchNumber < 30){
+        keyWord = 'disappointed'
+    } else if (matchNumber < 50){
+        keyWord = 'confused'
+    } else if (matchNumber < 75){
+        keyWord = 'goodluck'
+    } else {
+        keyWord = 'yes';
+    } ;
+    var endpoint = `https://api.giphy.com/v1/gifs/search?api_key=L2hcA8CaWClC3avIVwGtHdn9kVroSv2o&q=${keyWord}&limit=10&offset=0&lang=en`
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": endpoint,
+    };
+    $.get(endpoint, function (response) {
+       var index = Math.floor(Math.random()*10); // get random index to choose gif out of 10 results
+       $('#giphy').attr('src', response.data[index].images.original.url);
+       $('.gif').addClass('scale-in');
+    });
 };
 
 // function to display match info from Love Calculator API
