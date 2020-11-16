@@ -8,7 +8,7 @@ $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     defaultDate: new Date(1990,06,06),
     minDate: new Date(1900,1,1),
-    yearRange: 70
+    yearRange: 20
 });
 
 // Enable modal from materialize on the page
@@ -118,56 +118,68 @@ function fetchNumbersApi(person1, person2){
     person2.day = person2.dob.slice(0, 2);
     person2.month = person2.dob.slice(3, 5);
     person2.year = person2.dob.slice(6);
-
-    // Get facts for person1 based on their day/month date
-    $.get(`http://numbersapi.com/${person1.month + '/' + person1.day}/date`, function(data) {
-        person1.funFacts.push(data);
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": `https://numbersapi.p.rapidapi.com/${person1.month + '/' + person1.day}/date?json=true`,
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-key": "fcac5b61c1msh4ebb16d3bfa8330p11196fjsn97e7bb56efb3",
+            "x-rapidapi-host": "numbersapi.p.rapidapi.com"
+        }
+    };
+    
+    apiCall1 = $.get(settings).done(function (response) {
+        person1.funFacts.push(response.text);
     });
+    
     // Get facts for person2 based on their day/month date
-    $.get(`http://numbersapi.com/${person2.month + '/' + person2.day}/date`, function(data) {
-        person2.funFacts.push(data);
+    settings.url = `https://numbersapi.p.rapidapi.com/${person2.month + '/' + person2.day}/date?json=true`;
+    apiCall2 = $.get(settings).done(function (response) {
+        person2.funFacts.push(response.text);
     });
+    
+
     // Get facts for person1 & 2 based on their year date
-    $.get(`http://numbersapi.com/${person1.year + ',' + person2.year}/year`, function(data) {
-        var factArr = JSON.parse(data);
+    settings.url = `https://numbersapi.p.rapidapi.com/${person1.year + ',' + person2.year}/year?json=true`;
+    apiCall3 = $.get(settings).done(function (response) {
+        var factArr = JSON.parse(response);
         person1.funFacts.push(factArr[person1.year]);
         person2.funFacts.push(factArr[person2.year]);
     });
-    // Get date facts for person1 based on day number and month number
-    $.get(`http://numbersapi.com/${person1.day + ',' + person1.month}/date`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
-            person1.funFacts.push(fact);
-        });
-    });
-    // Get date facts for person2 based on day number and month number
-    $.get(`http://numbersapi.com/${person2.day + ',' + person2.month}/date`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
-            person2.funFacts.push(fact);
-        });
-    });
+
     // Get math facts for person1 based on day number and month number
-    $.get(`http://numbersapi.com/${person1.day + ',' + person1.month}/math`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
+    settings.url = `https://numbersapi.p.rapidapi.com/${person1.day + ',' + person1.month}/math`;
+    apiCall4 = $.get(settings).done(function (response) {
+        $.each(JSON.parse(response), function(key, fact){
             person1.funFacts.push(fact);
         });
     });
+
     // Get math facts for person2 based on day number and month number
-    $.get(`http://numbersapi.com/${person2.day + ',' + person2.month}/math`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
+    settings.url = `https://numbersapi.p.rapidapi.com/${person2.day + ',' + person2.month}/math`;
+    apiCall5 = $.get(settings).done(function (response) {
+        $.each(JSON.parse(response), function(key, fact){
             person2.funFacts.push(fact);
         });
     });
     // Get trivia facts for person1 based on day number and month number
-    $.get(`http://numbersapi.com/${person1.day + ',' + person1.month}/trivia`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
+    settings.url = `https://numbersapi.p.rapidapi.com/${person1.day + ',' + person1.month}/trivia`;
+    apiCall6 = $.get(settings).done(function (response) {
+        $.each(JSON.parse(response), function(key, fact){
             person1.funFacts.push(fact);
         });
     });
-    // Get trivia facts for person1 based on day number and month number
-    $.get(`http://numbersapi.com/${person2.day + ',' + person2.month}/trivia`, function(data) {
-        $.each(JSON.parse(data), function(key, fact){
+
+    // Get trivia facts for person2 based on day number and month number
+    settings.url = `https://numbersapi.p.rapidapi.com/${person2.day + ',' + person2.month}/trivia`;
+    apiCall7 = $.get(settings).done(function (response) {
+        $.each(JSON.parse(response), function(key, fact){
             person2.funFacts.push(fact);
         });
+    });
+    // when response data recieved from all requests call display info functions
+    $.when(apiCall1, apiCall2, apiCall3, apiCall4, apiCall5, apiCall6, apiCall7).done(function(){
         displayNumbersInfo(person1, 1);
         displayNumbersInfo(person2, 2);
     });

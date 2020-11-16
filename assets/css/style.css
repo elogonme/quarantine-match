@@ -169,4 +169,8 @@ div .modal-content {
     h1 {
       font-size: 2.5rem;
     }
+    #giphy {
+        width: 40vw;
+        transform: translate(10vw, -55%);
+    }
   }
