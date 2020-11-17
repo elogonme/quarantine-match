@@ -106,12 +106,37 @@ $(document).ready(function () {
 
     //---------------View History-----------------------
     //eventListener to view history
-    const matches = localStorage.getItem('matches')
-    matchesArray = JSON.parse(matches)
-    const displayPerson2 = localStorage.getItem('matches')
-    $(document).ready(function () {
+    // const matches = localStorage.getItem('matches')
+    // var matchesArray = JSON.parse(matches)
+    // console.log(matchesArray);
+
+    
+   
+    // function show Best Couples
+    document.getElementById("historyBtn").addEventListener("click", function(){
+
+        const matches = localStorage.getItem('matches')
+        var matchesArray = JSON.parse(matches)
+        
+        var maxMatchPercFlag = 0;
+        var bestCoupleResult = {};
+
+        for(var i=0; i<matchesArray.length; i++){
+
+            var tempPercentage = parseInt(matchesArray[i][0].matchPercentage);
+            if(maxMatchPercFlag == 0){
+                maxMatchPercFlag = tempPercentage;
+                bestCoupleResult = matchesArray[i];
+    
+            }else if(maxMatchPercFlag < tempPercentage){
+                maxMatchPercFlag = tempPercentage;
+                bestCoupleResult = matchesArray[i];
+            }
+            
+        } 
+        
         $('.modal').modal();
-        $(".modal-content p").text(displayPerson1 + displayPerson2);
+        $(".modal-content p").text(bestCoupleResult[0].name + " & " +bestCoupleResult[1].name);
 
 
     });
