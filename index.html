@@ -20,6 +20,8 @@
   <!-- Main styles sheet -->
   <link rel="stylesheet" href="assets/css/style.css" />
   <title>Quarantine Match</title>
+  <p id="foo">click on this element.</p>
+
 
 </head>
 
@@ -28,7 +30,14 @@
     <div class="center-align">
       <!-- Page Content goes here -->
       <h1>Quarantine Match</h1>
-      <p>info-text</p>
+
+      <button onclick="myFunction()">Game Rules</button>
+
+      <script>
+        function myFunction() {
+          alert('Enter your name and D.O.B. in entry one and your crush name and D.O.B in entry two, you do not need crush D.O.B, once entered click FIND to see results ');
+        }
+      </script>
 
       <div class="signs">
         <img src="assets/img/female.png" alt="Female Sign" class="female">
