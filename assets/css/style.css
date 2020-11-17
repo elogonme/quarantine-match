@@ -8,9 +8,18 @@ h1 {
     color: rgba(255, 255, 255);
     text-shadow: 3px 3px 3px rgb(143, 141, 141);
     font-size: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: .8rem;
     position: relative;
     z-index: 1;
+}
+
+.info-text {
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, 18vw);
 }
 /* Styling for input feilds */
 #name1, #name2, #dob1, #dob2 {
