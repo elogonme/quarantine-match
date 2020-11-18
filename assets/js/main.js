@@ -178,3 +178,16 @@ function dump(element) {
 };
   
 });
+
+function getData ()}{
+
+var matchpercentage = $(#findbtn).val
+
+var matchPercentage = $.get("https://api.giphy.com/v1/stickers/random?api_key=OIa4cwisWepHDXy5xHvG6DjPQoG58jDP&tag=&rating=g");
+matchPercentage.done(function(data)
+{ console.log("success recieved data", data); });
+
+var glf = data.data
+for (i in glf){
+    $('.inner').append("<img src='"+gif[i].images.original.url+"' style=height:100px; width:100px;'/>")
+}
