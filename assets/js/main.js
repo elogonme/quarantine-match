@@ -46,6 +46,7 @@ function initialize(){
     $('.fact-card').removeClass('scale-in'); // hide info cards
     $('.info').removeClass('scale-in'); // hide match info
     $('.gif').removeClass('scale-in'); // hide giphy image
+    $('#info-text').addClass('scale-in'); // Dislpay App info text
     // Clear person1
     person1 = { 
         name: '',
@@ -192,7 +193,7 @@ function fetchNumbersApi(person1, person2){
     var $percentage = $('#showPercentage');
     var $match = $('#showMatchInfo');
     $match.text(person1.matchInfo);
-    $percentage.text(person1.matchPercentage + "% match");
+    $percentage.text(person1.matchPercentage);
     $('.info').addClass('scale-in');
 };
 
@@ -228,6 +229,8 @@ function getGif(percentage){
 function displayNumbersInfo(person, cardNo){
     // first clear any old info from page
     $(`#p${cardNo}-facts`).empty();
+    // remove App info-text from page
+    $('#info-text').removeClass('scale-in');
     // create elelment with text to display on page
     $(`#person${cardNo}-title`).html('Date facts for ' + '<strong>' + person.name + '</strong>' + ' - ' + person.dob);
     for (var i = 0; i < person.funFacts.length; i++){
@@ -262,7 +265,7 @@ function loadMatchHistory(){
     // Sort list in ascending order based on %
     list.sort().reverse();
     $.each(list, function(index, value){
-        $matchList = $('<li class="collection-item">')
+       var $matchList = $('<li class="collection-item">')
         $matchList.html(value);
     $('#match-list').append($matchList);    
     });

@@ -26,13 +26,15 @@
     <!-- Main styles sheet -->
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Quarantine Match</title>
+    <meta name="keywords" content="Quarantine, love match, entertaining">
+    <meta name="description" content="Help people to find person of interest based on names and some funny facts!">
   </head>
-
   <body >
     <main>
       <div  class="center-align">
         <!-- Page Content goes here -->
         <h1>Quarantine Match</h1>
+        
         <div class="signs">
           <!-- Giphy image will go here -->
           <div class="gif scale-transition scale-out">
@@ -48,7 +50,7 @@
           <form id="form" class="col s12">
             <div class="info scale-transition scale-out">
               <div id="showMatchInfo">Match Info here</div>
-              <div id="showPercentage">% match</div>
+              <div class="percentage"><span id="showPercentage" class="pulse"></span>% match</div>
             </div>
             <div class="row">
               <div class="input-field col s4 m2 push-s2 push-m4">
@@ -80,6 +82,25 @@
             <!-- Find button -->
             <a id="find-btn" class="btn-floating btn-large waves-effect waves-light red pulse">Find</a>
           </form>
+        </div>
+        <div class="info-text container">
+          <div class="row">
+            <div class="col s12">
+              <div id="info-text" class="card-panel cyan scale-transition scale-out">
+                <span class="white-text">We have created a fun application, Quarantine Match to boost 
+                  morale while maintaining social distancing in the current time of uncertainty 
+                  and downcast moods. It allows you to check compatibility with 
+                  people you have recently met based on name and date of birth. In a time where 
+                  corona cases are spiking, we are promoting social distancing. Quarantine Match 
+                  is a fun application and not meant to provide viable data, but meant to be more
+                   of an ice breaker between two strangers and give them entertaining topics
+                    to build on and spark conversations. Enter Name and Date of Birth for person 1 
+                  and 2. Click on FIND button or hit ENTER key 
+                  to start search.
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <!-- Modal Trigger -->

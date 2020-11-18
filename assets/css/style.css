@@ -1,16 +1,26 @@
-/*--- ---*/
+/*--- Background ---*/
 body  {
     background: linear-gradient(to right,#e91e63 0%,#f06292 25%,#e91e63 50%,#2196f3 50%,#90caf9 75%, #2196f3 100%);
     }
 
+/* Main page */
 h1 {
     font: 400 100px/1.2 'Merienda One', Helvetica, sans-serif;
     color: rgba(255, 255, 255);
     text-shadow: 3px 3px 3px rgb(143, 141, 141);
     font-size: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: .8rem;
     position: relative;
     z-index: 1;
+}
+
+.info-text {
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, 18vw);
 }
 /* Styling for input feilds */
 #name1, #name2, #dob1, #dob2 {
@@ -113,10 +123,16 @@ input {
     font-weight: bolder;
 }
 
-#showPercentage {
+.percentage {
+    color: white;
     font-size: xx-large;
     font-weight: bolder;
-    color: white;
+}
+
+#showPercentage {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color:#ffeb3b;
 }
 
 .datepicker-date-display {
@@ -167,6 +183,9 @@ div .modal-content {
         transform: translate(-50%, 90%);
     }
     #showMatchInfo, #showPercentage {
+        font-size: xx-large;
+    }
+    .percentage {
         font-size: x-large;
     }
   }
@@ -175,6 +194,18 @@ div .modal-content {
     h1 {
       font-size: 2.5rem;
     }
+    #showMatchInfo {
+        font-size: x-large;
+    } 
+    
+    #showPercentage {
+        font-size: xx-large;
+    }
+
+    .percentage {
+        font-size: x-large;
+    }
+
     #giphy {
         width: 40vw;
         transform: translate(10vw, -55%);
