@@ -193,7 +193,7 @@ function fetchNumbersApi(person1, person2){
     var $percentage = $('#showPercentage');
     var $match = $('#showMatchInfo');
     $match.text(person1.matchInfo);
-    $percentage.text(person1.matchPercentage + "% match");
+    $percentage.text(person1.matchPercentage);
     $('.info').addClass('scale-in');
 };
 
@@ -265,7 +265,7 @@ function loadMatchHistory(){
     // Sort list in ascending order based on %
     list.sort().reverse();
     $.each(list, function(index, value){
-        $matchList = $('<li class="collection-item">')
+       var $matchList = $('<li class="collection-item">')
         $matchList.html(value);
     $('#match-list').append($matchList);    
     });

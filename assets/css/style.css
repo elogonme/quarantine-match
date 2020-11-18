@@ -123,10 +123,16 @@ input {
     font-weight: bolder;
 }
 
-#showPercentage {
+.percentage {
+    color: white;
     font-size: xx-large;
     font-weight: bolder;
-    color: white;
+}
+
+#showPercentage {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color:#ffeb3b;
 }
 
 .datepicker-date-display {
@@ -177,6 +183,9 @@ div .modal-content {
         transform: translate(-50%, 90%);
     }
     #showMatchInfo, #showPercentage {
+        font-size: xx-large;
+    }
+    .percentage {
         font-size: x-large;
     }
   }
@@ -185,6 +194,18 @@ div .modal-content {
     h1 {
       font-size: 2.5rem;
     }
+    #showMatchInfo {
+        font-size: x-large;
+    } 
+    
+    #showPercentage {
+        font-size: xx-large;
+    }
+
+    .percentage {
+        font-size: x-large;
+    }
+
     #giphy {
         width: 40vw;
         transform: translate(10vw, -55%);
