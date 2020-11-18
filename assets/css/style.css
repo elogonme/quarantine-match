@@ -1,11 +1,28 @@
+/*--- Background ---*/
+body  {
+    background: linear-gradient(to right,#e91e63 0%,#f06292 25%,#e91e63 50%,#2196f3 50%,#90caf9 75%, #2196f3 100%);
+    }
 
+/* Main page */
 h1 {
     font: 400 100px/1.2 'Merienda One', Helvetica, sans-serif;
     color: rgba(255, 255, 255);
     text-shadow: 3px 3px 3px rgb(143, 141, 141);
     font-size: 4rem;
-    margin-bottom: 2rem;
+    margin-bottom: .8rem;
+    position: relative;
+    z-index: 1;
 }
+
+.info-text {
+    color: white;
+    font-size: 16px;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform: translate(-50%, 18vw);
+}
+/* Styling for input feilds */
 #name1, #name2, #dob1, #dob2 {
     border: 1px solid #9e9e9e;
     border-radius: 5px;
@@ -30,34 +47,14 @@ input {
 }
 
 .input-field {
-    margin: 0;
+    margin: 10px 0 0 0;
 }
 
 .row {
     margin-bottom: 0;
 }
 
-/*--- background ---*/
-.pink {
-    color: rgba(229, 31, 140, 0.576);
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -100;
-    height: 100vh;
-    width: 50vw;
-}
-
-.blue {
-    color: rgba(29, 117, 158, 0.685);
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: -100;
-    height: 100vh;
-    width: 50vw;
-}
-
+/* Styling for graphic decoration images */
 .dates {
     position: relative;
 }
@@ -95,6 +92,17 @@ input {
     transform: translate(18vw, -25%);
 }
 
+#giphy {
+    margin-top: 20px;
+    position: absolute;
+    border-radius: 5px;
+    width: 28vw;
+    z-index: -90;
+    top: 50%;
+    left: 50%;
+    transform: translate(18vw, -25%);
+}
+
 #find-btn {
     margin-top: 20px;
     position: absolute;
@@ -103,6 +111,7 @@ input {
     transform: translate(-50%, 9vw);
 }
 
+/* Styling for displayed info and pop up cards */
 .info {
     text-shadow: 3px 3px 3px rgb(143, 141, 141);
     font-family: 'Roboto', sans-serif;
@@ -114,10 +123,20 @@ input {
     font-weight: bolder;
 }
 
-#showPercentage {
+.percentage {
+    color: white;
     font-size: xx-large;
     font-weight: bolder;
-    color: white;
+}
+
+#showPercentage {
+    font-size: xxx-large;
+    font-weight: bolder;
+    color:#ffeb3b;
+}
+
+.datepicker-date-display {
+    background-color: #e91e63;
 }
 
 .card-content {
@@ -137,14 +156,58 @@ li::before {
     margin-left: -1em
 }
 
+/* Styling for pop up modal */
+.modal-footer {
+    text-align: center!important;
+}
+#match-list {
+    margin-bottom: 0px;
+}
+
+div .modal-content {
+    padding-bottom: 0!important;
+}
+
+.modal-close.btn {
+    margin: 6px 8px!important;
+}
+
+/* Styling for different screen sizes for responsive design and good look on mobile devices */
 @media only screen and (max-width: 568px) {
     h1 {
       font-size: 3rem;
+    }
+    #find-btn {
+        top: 0%;
+        left: 20%;
+        transform: translate(-50%, 90%);
+    }
+    #showMatchInfo, #showPercentage {
+        font-size: xx-large;
+    }
+    .percentage {
+        font-size: x-large;
     }
   }
 
   @media only screen and (max-width: 360px) {
     h1 {
       font-size: 2.5rem;
+    }
+    #showMatchInfo {
+        font-size: x-large;
+    } 
+    
+    #showPercentage {
+        font-size: xx-large;
+    }
+
+    .percentage {
+        font-size: x-large;
+    }
+
+    #giphy {
+        width: 40vw;
+        transform: translate(10vw, -55%);
     }
   }
