@@ -8,7 +8,7 @@ $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     defaultDate: new Date(1990,06,06),
     minDate: new Date(1900,1,1),
-    yearRange: 20
+    yearRange: 25
 });
 
 // Enable modal from materialize on the page
@@ -47,6 +47,7 @@ function initialize(){
     $('.info').removeClass('scale-in'); // hide match info
     $('.gif').removeClass('scale-in'); // hide giphy image
     $('#info-text').addClass('scale-in'); // Dislpay App info text
+    $('#instructions').addClass('scale-in'); // Dislpay App info text
     // Clear person1
     person1 = { 
         name: '',
@@ -231,6 +232,7 @@ function displayNumbersInfo(person, cardNo){
     $(`#p${cardNo}-facts`).empty();
     // remove App info-text from page
     $('#info-text').removeClass('scale-in');
+    $('#instructions').removeClass('scale-in'); // Dislpay App info text
     // create elelment with text to display on page
     $(`#person${cardNo}-title`).html('Date facts for ' + '<strong>' + person.name + '</strong>' + ' - ' + person.dob);
     for (var i = 0; i < person.funFacts.length; i++){
