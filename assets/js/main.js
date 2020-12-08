@@ -8,7 +8,7 @@ $('.datepicker').datepicker({
     format: 'dd/mm/yyyy',
     defaultDate: new Date(1990,06,06),
     minDate: new Date(1900,1,1),
-    yearRange: 25
+    yearRange: 18
 });
 
 // Enable modal from materialize on the page
@@ -202,17 +202,26 @@ function fetchNumbersApi(person1, person2){
 function getGif(percentage){
     var matchNumber = parseInt(percentage);
     var keyWord = '';
-    if (matchNumber < 15){
-        keyWord = 'nope'
-    } else if (matchNumber < 30){
-        keyWord = 'disappointed'
-    } else if (matchNumber < 50){
-        keyWord = 'confused'
-    } else if (matchNumber < 75){
-        keyWord = 'goodluck'
-    } else {
-        keyWord = 'yes';
-    } ;
+    switch (true) {
+        case (matchNumber < 15):
+            keyWord = 'nope';
+            break;
+        case (matchNumber < 30):
+            keyWord = 'disappointed';
+            break;
+        case (matchNumber < 50):
+            keyWord = 'confused';
+            break;
+        case (matchNumber < 60):
+            keyWord = 'maybe';
+            break;
+        case (matchNumber < 75):
+            keyWord = 'goodluck';
+            break;
+        default:
+            keyWord = 'yes';
+    };
+
     var endpoint = `https://api.giphy.com/v1/gifs/search?api_key=L2hcA8CaWClC3avIVwGtHdn9kVroSv2o&q=${keyWord}&limit=10&offset=0&lang=en`
     const settings = {
         "async": true,
